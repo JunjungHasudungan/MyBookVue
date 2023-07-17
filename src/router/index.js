@@ -6,19 +6,19 @@ import Home from '../components/Home.vue'
 
 const routes = [
     { 
-        path: '/', 
+        path: "/", 
         name: 'Home',
         component: Home 
     },
     { 
-        path: '/login', 
+        path: "/login", 
         name: 'Login',
-        component: () => import('../components/Login.vue') 
+        component: () => import("../components/Login.vue") 
     },
     { 
-        path: '/register', 
-        name: 'Register',
-        component: () => import('../components/Register.vue') 
+        path: "/register", 
+        name: "Register",
+        component: () => import("../components/Register.vue") 
     },
 ];
 
