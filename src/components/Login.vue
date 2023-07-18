@@ -1,7 +1,6 @@
 <script setup>
-    import axios from "axios";
     import { ref } from "vue";
-    import { useRouter } from 'vue-router'
+    import { useAuthStore } from '../stores/auth'
 
     const form = ref({
        email: '',
@@ -9,17 +8,7 @@
 
     });
 
-    const route = useRouter();
-
-    const handleLogin = async () => {
-
-        await axios.post('/login', {
-            email: form.value.email,
-            password: form.value.password,
-        });
-
-        route.push('/')
-    }
+    const authStore = useAuthStore();
 
 </script>
 
@@ -30,7 +19,7 @@
                 <div id="title" class="w-full p-8 px-py mb-2 px-2 py-2 justify-items-center">
                     <h1 class="w-full font-bold text-white item-center text-center">Form Login</h1>
                 </div>
-                <form   @submit.prevent="handleLogin()"
+                <form   @submit.prevent="authStore.handleLogin(form)"
                         class="justify-center sm:justify-center items-center">
                     <div class="mb-6">
                         <input  type="email" 
