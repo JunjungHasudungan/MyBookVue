@@ -1,21 +1,26 @@
 <script setup>
-    import { ref, onMounted } from 'vue';
-    import axios from 'axios';
+    import { onMounted } from 'vue';
+    import { useAuthStore } from '../stores/auth'
 
-    const user = ref();
-
+    // create object authUser 
+    const authStore = useAuthStore();
     onMounted( async () => {
-        // create var data for data user from axios
-        const data = await axios.get('/api/user');
-       user.value = data.data;
+        // getUser
+        await authStore.getUser();
     } );
+
 </script>
 
 <template>
-    <div>
-        <!-- display data user auth -->
-        <h1> name: {{ user?.name }}</h1>
-        <p>email: {{ user?.email }}</p>
+        
+    <div v-if="authStore.user">
+        <div class="w-full px-2 py-2 justify-items-center">
+            <h1> name: {{ authStore.user.name }}</h1>
+            <p>email: {{ authStore.user.email }}</p>
+        </div>
+    </div>
+    <div v-else class="px-2 py-2">
+        <p class="text-gray-900 font-bold text-center"> silahkan login terlebih dahulu.. </p>
     </div>
 </template>
 
