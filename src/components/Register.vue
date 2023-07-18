@@ -10,7 +10,7 @@
         password: '',
         password_confirmation: ''
     })
-    
+    // password
 </script>
 
 <template>
