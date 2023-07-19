@@ -13,7 +13,10 @@
 
 <template>
         
-    <div v-if="authStore.user" class="bg-lime-300"> 
+    <div
+        class="bg-lime-300"
+        v-if="authStore.user"
+        >
         <div class="w-full px-2 py-2 justify-items-center">
             <h1> name: {{ authStore.user.name }}</h1>
             <p>email: {{ authStore.user.email }}</p>
