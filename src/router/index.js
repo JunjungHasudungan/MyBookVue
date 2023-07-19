@@ -20,6 +20,11 @@ const routes = [
         name: "Register",
         component: () => import("../components/Register.vue") 
     },
+    {
+        path: "/posts",
+        name: "PostIndex",
+        component: () => import("../components/pages/posts/PostIndex.vue")
+    }
 ];
 
 const router = createRouter({
