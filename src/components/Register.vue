@@ -29,7 +29,10 @@
                           type="text"
                           v-model="form.name"
                         >
-                        <div v-if="authStore.errors.name" class="flex">
+                       <div
+                          class="flex"
+                          v-if="authStore.errors.name"
+                        >
                             <span class="text-red-400 text-xs m-1 p-1"> {{ authStore.errors.name[0] }}  </span>
                         </div>
                     </div> 
@@ -42,7 +45,10 @@
                           type="email"
                           v-model="form.email"
                         >
-                        <div v-if="authStore.errors.email" class="flex">
+                        <div
+                          class="flex"
+                          v-if="authStore.errors.email"
+                        >
                             <span class="text-red-400 text-xs m-1 p-1">{{ authStore.errors.email[0] }}</span>
                         </div>
                     </div> 
@@ -55,7 +61,10 @@
                          type="password"
                          v-model="form.password"
                        >
-                       <div v-if="authStore.errors.password" class="flex">
+                       <div
+                         class="flex"
+                         v-if="authStore.errors.password"
+                       >
                             <span class="text-red-400 text-xs m-1 p-1"> {{ authStore.errors.password[0] }}</span>
                        </div>
                     </div> 
@@ -67,6 +76,12 @@
                           type="password"
                           v-model="form.password_confirmation"
                         >
+                        <div
+                          class="flex"
+                          v-if="authStore.errors.password"
+                        >
+                            <span class="text-red-400 font-xs m-1 p-1">  {{ authStore.errors.password[0] }} </span>
+                        </div>
                     </div> 
                     <button type="submit" 
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

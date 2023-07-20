@@ -42,7 +42,7 @@ export const useAuthStore = defineStore("auth", {
                 this.router.push('/');
             } catch(error) {
                 if(error.response.status === 422) {
-                    this.authErrors = error.response.data.errors
+                    this.authErrors =error.response.data.errors
                 }
             }
         },

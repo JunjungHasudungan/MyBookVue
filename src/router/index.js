@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { ref, onMounted } from "vue";
+import PostIndex from '../views/PostIndex.vue';
+import Login from '../components/Login.vue';
+import Register from '../components/Register.vue';
 
 import Home from '../components/Home.vue'
 
@@ -15,7 +18,7 @@ const routes = [
     { 
         path: "/login", 
         name: 'Login',
-        component: () => import("../components/Login.vue"),
+        component: Login,
         meta: {
             title: "Login"
         },
@@ -23,7 +26,7 @@ const routes = [
     { 
         path: "/register", 
         name: "Register",
-        component: () => import("../components/Register.vue"),
+        component: Register,
         meta: {
             title: "Register"
         }
@@ -31,7 +34,7 @@ const routes = [
     {
         path: "/posts",
         name: "PostIndex",
-        component: () => import("../components/pages/posts/PostIndex.vue"),
+        component: PostIndex,
         meta: {
             title: "Post"
         },
