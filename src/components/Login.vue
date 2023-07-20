@@ -29,7 +29,7 @@
                          v-model="form.email"
                        >
                        <div v-if="authStore.errors.email" class="flex">
-                            <span class="text-red-400 font-sm m-2 p-2"> {{ authStore.errors.email[0] }} </span>
+                            <span class="text-red-400 text-xs m-1 p-1"> {{ authStore.errors.email[0] }} </span>
                        </div>
                     </div> 
                     <div class="mb-6">
@@ -41,7 +41,7 @@
                          v-model="form.password"
                        >
                        <div v-if="authStore.errors.password" class="flex">
-                            <span class="text-red-400 font-sm m-2 p-2"> {{ authStore.errors.password[0] }} </span>
+                            <span class="text-red-400 text-xs m-1 p-1"> {{ authStore.errors.password[0] }} </span>
                        </div>
                     </div> 
                         <button type="submit" 
