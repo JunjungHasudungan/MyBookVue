@@ -25,20 +25,24 @@
                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                          id="email"
                          placeholder="Email"
-                         required
                          type="email"
                          v-model="form.email"
                        >
+                       <div v-if="authStore.errors.email" class="flex">
+                            <span class="text-red-400 font-sm m-2 p-2"> {{ authStore.errors.email[0] }} </span>
+                       </div>
                     </div> 
                     <div class="mb-6">
                        <input
                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                          id="password"
                          placeholder="Password"
-                         required
                          type="password"
                          v-model="form.password"
                        >
+                       <div v-if="authStore.errors.password" class="flex">
+                            <span class="text-red-400 font-sm m-2 p-2"> {{ authStore.errors.password[0] }} </span>
+                       </div>
                     </div> 
                         <button type="submit" 
                                 class="text-white justify-items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

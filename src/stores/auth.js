@@ -4,10 +4,12 @@ import axios from 'axios';
 // create object useAuth form auth
 export const useAuthStore = defineStore("auth", {
     state: () => ({
-        authUser: null  // create some object
+        authUser: null,  // create some object
+        authErrors: [] // create authErrors for replace all errors here
     }),
     getters: { 
-        user: (state) => state.authUser 
+        user: ( state ) => state.authUser,
+        errors: ( state ) => state.authErrors,
     },
     actions: {
         // create some function for getToken
@@ -27,29 +29,42 @@ export const useAuthStore = defineStore("auth", {
 
         async handleLogin(data) {
 
-             // use getToken
-            await this.getToken();            
+            this.authErrors = []; // assign all errors to here
 
-            await axios.post('/login', {
-                email: data.email,
-                password: data.password,
-            });
-    
-            this.router.push('/');
+            await this.getToken(); // use getToken         
+
+            try {
+                await axios.post('/login', {
+                    email: data.email,
+                    password: data.password,
+                });
+        
+                this.router.push('/');
+            } catch(error) {
+                if(error.response.status === 422) {
+                    this.authErrors =error.response.data.errors
+                }
+            }
         },
 
         async handleRegister(data) {
-
+            this.authErrors = [];  // asign errors to here
             await this.getToken();
 
-            await axios.post('/register', {
-                name: data.name,
-                email: data.email,
-                password: data.password, 
-                password_confirmation: data.password_confirmation,
-            });
-
-            this.router.push('/');
+            try {
+                await axios.post('/register', {
+                    name: data.name,
+                    email: data.email,
+                    password: data.password, 
+                    password_confirmation: data.password_confirmation,
+                });
+    
+                this.router.push('/');
+            } catch (error) {
+                if ( error.response.status === 422 ) {
+                    this.authErrors = error.response.data.errors
+                }
+            }
         },
 
         async handleLogout(){

@@ -26,7 +26,6 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           id="text"
                           placeholder="Name.."
-                          required
                           type="text"
                           v-model="form.name"
                         >
@@ -37,7 +36,6 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           id="email"
                           placeholder="Email.."
-                          required
                           type="email"
                           v-model="form.email"
                         >
@@ -48,7 +46,6 @@
                          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                          id="password"
                          placeholder="Password"
-                         required
                          type="password"
                          v-model="form.password"
                        >
@@ -58,7 +55,6 @@
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           id="confirm_password"
                           placeholder="Password Confirmation"
-                          required
                           type="password"
                           v-model="form.password_confirmation"
                         >
