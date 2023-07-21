@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 import PostIndex from '../views/PostIndex.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
+import Counter from '../views/Counter.vue';
 
 import Home from '../components/Home.vue'
 
@@ -14,6 +15,14 @@ const routes = [
         meta: {
             title: "Home"
         }
+    },
+    {
+        path: "/counter",
+        name: 'Counter',
+        component: Counter,
+        meta: {
+            title: "Counter"
+        }  
     },
     { 
         path: "/login", 

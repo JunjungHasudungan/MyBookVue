@@ -14,7 +14,7 @@
 
 <template>
     <div class="border-lg border-gray-900 mt-2 p-2 px-8 py-2"> 
-        <div class="px-4 py-4 justify-center items-center  bg-gray-200  rounded-lg border border-gray-500 p-2 ">
+        <div class="px-4 py-4 justify-center items-center  bg-gray-400  rounded-lg border border-gray-500 p-2 ">
             <div class="w-full sm:max-w-md mt-auto px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 <div id="title" class="w-full p-8 px-py mb-2 px-2 py-2 justify-items-center">
                     <h1 class="w-full font-bold text-white item-center text-center">Form Login</h1>
