@@ -1,9 +1,9 @@
 <script setup>
   import Nav from './components/Nav.vue'
   import counter from './composables/counter';
-
   import { provide } from 'vue';
-    provide('counter', counter)
+
+  provide('counter', counter)
 
 </script>
 

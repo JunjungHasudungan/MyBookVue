@@ -11,10 +11,7 @@
 
 <template>
   <div class="w-full">
-        <div class="mt-4 px-2 py-2">
-            <h1 class="text-center">Halaman Counter Index</h1>
-        </div>
-        <div class="w-full bg-slate-200 px-4 py-4">
+        <div class="w-full bg-slate-200 px-2 py-2">
             <CounterCard />
         </div>
 

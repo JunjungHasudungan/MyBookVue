@@ -10,6 +10,10 @@ const state = reactive({
 const getters = {
     counterSquared() {
         return state.baseNumber * state.baseNumber
+    }, 
+    counterEvenOrOdd() {
+        if (state.baseNumber % 2 === 0) return 'even'
+        return 'odd'
     }
 }
 
