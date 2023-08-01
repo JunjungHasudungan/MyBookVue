@@ -4,6 +4,7 @@ import PostIndex from '../views/PostIndex.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import Counter from '../views/Counter.vue';
+import SimpleForm from '../views/SimpleForm.vue';
 
 import Home from '../components/Home.vue'
 
@@ -47,6 +48,14 @@ const routes = [
         meta: {
             title: "Post"
         },
+    },
+    {
+        path: "/simple-form",
+        name: "SimpleForm",
+        component: SimpleForm,
+        meta: {
+            title: "Simple Form"
+        }
     }
 ];
 
