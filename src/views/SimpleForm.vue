@@ -12,8 +12,13 @@
         'education'
     ])
 
-    // create object from usePostStore
-    const dataPost = usePostStore()
+    const formPost = reactive({
+        description: '',
+        title: '',
+        category: '',
+    });
+
+    const postStore  = usePostStore()   // create object from usePostStore
 
 
 </script>
@@ -33,12 +38,12 @@
                     <h1 class="w-full font-bold text-white item-center text-center">Form an event</h1>
                 </div>
                
-               <form  @submit.prevent="add()" class="justify-center sm:justify-center space-y-2">
+               <form  @submit.prevent="postStore.addPost(formPost)" class="justify-center sm:justify-center space-y-2">
                         <label for="category" class="text-xs font-bold text-blue-200" > Select a category</label>
                        <select
                          class="w-full px-2 py-2 rounded-lg border-2 border-slate-600"
                          id=""
-                         v-model="category"
+                         v-model="formPost.category"
                          name="category"
                        >
                         <option
@@ -53,16 +58,18 @@
                        </select>
 
                        <BaseInput 
-                       v-model="title"
+                       v-model="formPost.title"
                        label="Judul"
                        type="text"
                        />
 
                        <BaseInput 
-                       v-model="description"
+                       v-model="formPost.description"
                        label="Deskripsi"
                        type="text"
                        />
+                       <!-- <input type="text" v-model="postStore.title">
+                       <input type="text" v-model="postStore.description"> -->
 
                       <div class="flex-auto justify-self-end space-x-6 w-full">
                           <button type="submit" 
