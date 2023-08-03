@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
+import { useRouter } from "vue-router";
 import axios from "axios";
 
-export const usePostStore = defineStore("post", {
+export const usePostStore = defineStore("post",  {
     // create state for declaration properthies
     state: () => ({
-        dataPost: [], // for catch all data posts from axios
+        dataPost: null, // for catch all data posts from axios
+        dataUser: null,
         postErrors: [], // for cathc all data errors from axios
         category: '',
         title: '',
@@ -12,7 +14,8 @@ export const usePostStore = defineStore("post", {
     }),
 
     getters: {
-
+        user: ( state ) => state.dataUser,
+        errors: ( state ) => state.postErrors
     },
 
     actions: {
@@ -20,6 +23,16 @@ export const usePostStore = defineStore("post", {
         async getToken() {
             await axios.get('/sanctum/csrf-cookie')
         },
+
+        // crate some function for get data user
+        async getUser() {
+            await this.getToken();
+
+            const apiUser = await axios.get('api/user');
+            this.dataUser = apiUser.data;
+        },
+
+        
 
         // create some function for get all posts
         async getAllPost() {
@@ -41,22 +54,24 @@ export const usePostStore = defineStore("post", {
         },
 
         async addPost( data ) {
+            const router = useRouter();
 
             this.postErrors = [];  // for collect errors posts
 
             try{
-                // try to post data to axios
                 await axios.post('/api/posts', {
                     description: data.description,
                     title: data.title,
                     category: data.category,
-
                 });
 
-
                 this.router.push('/');
+                // await router.push('/');
+
             }catch( error ) {
-               console.log(error)
+               if ( error.response.status === 422 ) {
+                    this.postErrors = error.response.data.errors
+               }
             }
         }
     }

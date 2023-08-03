@@ -1,9 +1,8 @@
 
 <script setup>
 
-    import { reactive, ref } from 'vue';
+    import {  ref } from 'vue';
     import BaseInput from '../components/BaseInput.vue';
-    import EventDisplay from './EventDislpay.vue';
     import { usePostStore } from '../stores/post';
 
     const dataCategories = ref([
@@ -12,14 +11,14 @@
         'education'
     ])
 
-    const formPost = reactive({
+    const formPost = ref({
         description: '',
         title: '',
         category: '',
     });
 
     const postStore  = usePostStore()   // create object from usePostStore
-
+    // postStore.addPost(formPost)
 
 </script>
 
@@ -56,18 +55,38 @@
                             {{ item }}
                         </option>
                        </select>
-
+                       <!-- display error category -->
+                       <div class="flex" v-if="postStore.errors.category">
+                        <span class="text-red-400 text-xs m-1 p-1"> {{ postStore.errors.category[0] }} </span>
+                       </div>
                        <BaseInput 
                        v-model="formPost.title"
                        label="Judul"
                        type="text"
                        />
+                       <!-- display error title -->
+                      <div
+                         class="flex"
+                         v-if="postStore.errors.title"
+                       >
+                       <span class="text-red-400 text-xs m-1 p-1">
+                            {{ postStore.errors.title[0] }}
+                       </span>
 
+                       </div>
                        <BaseInput 
                        v-model="formPost.description"
                        label="Deskripsi"
                        type="text"
                        />
+
+                       <!-- display error description -->
+                       <div
+                         class="flex"
+                         v-if="postStore.errors.description"
+                       >
+                        <span class="text-red-400 text-xs" > {{ postStore.errors.description[0] }} </span>
+                       </div>
                        <!-- <input type="text" v-model="postStore.title">
                        <input type="text" v-model="postStore.description"> -->
 
