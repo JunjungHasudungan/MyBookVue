@@ -5,7 +5,7 @@ import axios from "axios";
 export const usePostStore = defineStore("post",  {
     // create state for declaration properthies
     state: () => ({
-        dataPost: null, // for catch all data posts from axios
+        dataPost: [], // for catch all data posts from axios
         dataUser: null,
         postErrors: [], // for cathc all data errors from axios
         category: '',
@@ -15,6 +15,7 @@ export const usePostStore = defineStore("post",  {
 
     getters: {
         user: ( state ) => state.dataUser,
+        posts: ( state ) => state.dataPost,
         errors: ( state ) => state.postErrors
     },
 
@@ -32,25 +33,16 @@ export const usePostStore = defineStore("post",  {
             this.dataUser = apiUser.data;
         },
 
-        
-
         // create some function for get all posts
         async getAllPost() {
 
             this.postErrors = [] // call postsErrors for collect errors
 
             await this.getToken(); // call getToken again for get Cookies
-            try{
 
-                const apiPosts = await axios.get('api/posts');
+            const apiPosts = await axios.get('api/posts'); // get all data posts from api using axios
 
-                this.dataPost = apiPosts.data
-
-            }catch( error ) {
-                if( error.this.dataPost.data === 422 ) {
-                    console.log('data tidak ada..')
-                }
-            }
+           this.dataPost =  apiPosts.data.data; // insert apiPost to dataPost var global
         },
 
         async addPost( data ) {
@@ -65,8 +57,7 @@ export const usePostStore = defineStore("post",  {
                     category: data.category,
                 });
 
-                this.router.push('/');
-                // await router.push('/');
+                this.router.push({name: 'PostIndex'}); // passing route to postIndex
 
             }catch( error ) {
                if ( error.response.status === 422 ) {

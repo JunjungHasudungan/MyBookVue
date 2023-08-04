@@ -18,7 +18,6 @@
     });
 
     const postStore  = usePostStore()   // create object from usePostStore
-    // postStore.addPost(formPost)
 
 </script>
 
@@ -87,8 +86,6 @@
                        >
                         <span class="text-red-400 text-xs" > {{ postStore.errors.description[0] }} </span>
                        </div>
-                       <!-- <input type="text" v-model="postStore.title">
-                       <input type="text" v-model="postStore.description"> -->
 
                       <div class="flex-auto justify-self-end space-x-6 w-full">
                           <button type="submit" 
@@ -98,9 +95,6 @@
                       </div>
                 </form>
             </div>
-
-            <!-- <EventDisplay /> -->
-
 
         </div>
     </div>
