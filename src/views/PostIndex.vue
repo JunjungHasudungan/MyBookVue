@@ -6,13 +6,14 @@
 
     onMounted( async () => {
         await postStore.getAllPost();
+        await postStore.getUser();
     } );
 </script>
 
 <template>
     <div class="w-full bg-gray-200">
         <div class="mt-4 px-2 py-2 bg-yellow-200 ">
-            <h1 class="text-center">Halaman Post Index</h1>
+            <h1 class="text-center">Halaman Post Index </h1>
         </div>
         <div class="w-full px-4 py-4">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -56,7 +57,7 @@
                                 {{ item.category }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ item.title }}
+                                {{ item.id }}
                             </td>
                             <td class="px-6 py-4">
                                {{ item.description }}
@@ -65,7 +66,12 @@
                                 {{ item.created_at }}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <router-link 
+                                :to="{ name: 'PostEdit', params: {id: item.id} }"
+                                class="font-medium border-lg border-gray-300 hover-blue-200
+                                    text-blue-600 dark:text-blue-500 hover:underline"
+                                > Edit
+                                </router-link>
                             </td>
                         </tr>
                     </tbody>

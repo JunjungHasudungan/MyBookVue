@@ -22,10 +22,28 @@
         >
         <div class="w-full px-2 py-2 justify-items-center">
           
-            <a href="#" class="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            <a href="#" class="block w-full p-6">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-blue-400">
+                    Halo    
+                    <span class="font-bold text-2xl text-blue-600">
+                    {{ authStore.user.name }} ,
+                    </span> Welcome Back To Your Book
+                </h5>
+
             </a>
+            <div class="w-full mx-auto mt-2 border-2 rounded-lg shadow border-blue-200">
+                
+                <h2 class="px-2 mb-2 text-lg font-bold text-gray-900">Your Data:</h2>
+                <ul class="px-2 py-2 max-w-md space-y-1 text-gray-600 list-disc list-inside">
+                    <li>
+                        <span class="font-bold">Id: </span>  {{ authStore.user.id }}
+                    </li>
+                    <li>
+                        <span class="font-bold">Email: </span>  {{ authStore.user.email }}
+                    </li>
+                </ul>
+
+            </div>
 
         </div>
         <div class="mt-2 px-2 py-2 bg-red-200 m-2 p-2">

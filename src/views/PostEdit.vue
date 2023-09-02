@@ -11,10 +11,17 @@
         'education'
     ])
 
+    const postStore = usePostStore()   // create object from usePostStore
     
-    const postStore  = usePostStore()   // create object from usePostStore
-    
-    alert(postStore);
+    // alert(postStore.post);
+    // create props for get id
+    const props = defineProps({
+        id: {
+            type: String,
+            required: true,
+        }
+    });
+
     const formPost = ref({
         description: '',
         title: '',
@@ -23,7 +30,14 @@
     });
     
     onMounted( async () => {
-        await postStore.getUser()
+        try{
+            await postStore.getPost(props.id)
+    
+            form.value.description = postStore.post.description;
+
+        }catch( error ) {
+            console.log('ada data eror', error);
+        }
     });
 
     
@@ -31,12 +45,6 @@
 </script>
 
 <template>
-    <!-- <div class="w-full">
-        <div class="w-full px-2 py-2">
-            <h1 class="text-center font-bold text-gray-600">Simple Form Post {{ postStore.dataUser }}</h1>
-        </div> 
-
-    </div> -->
 
     <ul>
         <li v-for="value in user" :key="value">
@@ -89,7 +97,7 @@
 
                        </div>
                        <BaseInput 
-                       v-model="formPost.description"
+                       v-model="postStore.post"
                        label="Deskripsi"
                        type="text"
                        />

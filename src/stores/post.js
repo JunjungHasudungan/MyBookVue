@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { useRouter } from "vue-router";
 import axios from "axios";
+import dayjs from "dayjs";
 
 export const usePostStore = defineStore("post",  {
     // create state for declaration properthies
@@ -8,6 +9,7 @@ export const usePostStore = defineStore("post",  {
         dataPost: [], // for catch all data posts from axios
         dataUser: null,
         postErrors: [], // for cathc all data errors from axios
+        post: null,
         category: '',
         title: '',
         description: '',
@@ -16,7 +18,8 @@ export const usePostStore = defineStore("post",  {
     getters: {
         user: ( state ) => state.dataUser,
         posts: ( state ) => state.dataPost,
-        errors: ( state ) => state.postErrors
+        errors: ( state ) => state.postErrors,
+        post: ( state ) => state.post,
     },
 
     actions: {
@@ -45,6 +48,28 @@ export const usePostStore = defineStore("post",  {
            this.dataPost =  apiPosts.data.data; // insert apiPost to dataPost var global
         },
 
+        // create some function for get post from id post
+        async getPost( id ) {
+            this.postErrors = []; // for catch error data post
+
+            try {
+                // const response = await axios.get('api/posts/' + id/edit);
+                const response = axios.get(`/api/posts/${postId}/edit`)
+                // const response = axios.get("/api/posts/" + id);
+
+                this.post = response.data.data;
+
+                // const dataPost =  await axios.get('api/posts/' + id); // get some data using axios
+
+            }catch(error) {
+                console.log(error);
+
+                this.postErrors.push('Terjadi kesalahan saat mengambil data post.');
+                // console.log(dataeror);
+            }
+
+        },
+
         async addPost( data ) {
             const router = useRouter();
 
@@ -64,6 +89,6 @@ export const usePostStore = defineStore("post",  {
                     this.postErrors = error.response.data.errors
                }
             }
-        }
+        },
     }
 });
