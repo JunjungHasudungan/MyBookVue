@@ -14,7 +14,7 @@
     
     const postStore  = usePostStore()   // create object from usePostStore
     
-    alert(postStore);
+    // alert(postStore);
     const formPost = ref({
         description: '',
         title: '',

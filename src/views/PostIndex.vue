@@ -6,7 +6,7 @@
 
     onMounted( async () => {
         await postStore.getAllPost();
-        await postStore.getUser();
+        // await postStore.getUser();
     } );
 </script>
 

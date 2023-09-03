@@ -6,6 +6,7 @@ import Register from '../components/Register.vue';
 import Counter from '../views/Counter.vue';
 import SimpleForm from '../views/SimpleForm.vue';
 import PostEdit from '../views/PostEdit.vue';
+import UserIndex from '../views/User/UserIndex.vue';
 
 import Home from '../components/Home.vue'
 
@@ -56,6 +57,14 @@ const routes = [
         component: SimpleForm,
         meta: {
             title: "Simple Form"
+        }
+    },
+    {
+        path: "/data-user",
+        name: "UserIndex",
+        component: UserIndex,
+        meta: {
+            title: "Data User"
         }
     },
     {
