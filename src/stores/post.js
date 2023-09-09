@@ -6,35 +6,20 @@ export const usePostStore = defineStore("post",  {
     // create state for declaration properthies
     state: () => ({
         dataPost: [], // for catch all data posts from axios
-        // dataUser: null,
         postErrors: [], // for cathc all data errors from axios
-        post: [],
+        singlePost: [],
         category: '',
         title: '',
         description: '',
     }),
 
     getters: {
-        // user: ( state ) => state.dataUser,
         posts: ( state ) => state.dataPost,
         errors: ( state ) => state.postErrors,
-        post: ( state ) => state.post,
+        post: ( state ) => state.singlePost,
     },
 
     actions: {
-        // create some function for get cookies
-        // async getToken() {
-        //     await axios.get('/sanctum/csrf-cookie')
-        // },
-
-        // crate some function for get data user
-        // async getUser() {
-        //     await this.getToken();
-
-        //     const apiUser = await axios.get('api/user');
-        //     this.dataUser = apiUser.data;
-        // },
-
         // create some function for get all posts
         async getAllPost() {
 
@@ -46,7 +31,28 @@ export const usePostStore = defineStore("post",  {
 
            this.dataPost =  apiPosts.data.data; // insert apiPost to dataPost var global
         },
+        async getSinglePost( id ) {
+            try {
+                const response = await axios.get('/api/posts/' + id);
 
+                this.singlePost = response.data.data;
+            }catch( error ) {
+                if(error.response === 422 ) {
+                    console.log('data tidak ada..');
+                }
+            }
+        },
+        async getPost( id ) {
+            try {
+                const response = await axios.get('/api/posts/' + id)
+
+                this.post = response.data.data;
+            } catch( error ) {
+                if( error.response === 422 ) {
+                    console.log("ada yang error..");
+                }
+            }
+        },
         async addPost( data ) {
             const router = useRouter();
 

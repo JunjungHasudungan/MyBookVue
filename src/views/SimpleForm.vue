@@ -23,7 +23,7 @@
     });
     
     onMounted( async () => {
-        await postStore.getUser()
+        await postStore.getAllPost()
     });
 
     

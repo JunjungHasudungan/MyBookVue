@@ -50,12 +50,27 @@
                             <span class="text-red-400 text-xs m-1 p-1"> {{ authStore.errors.password[0] }} </span>
                        </div>
                     </div> 
-                      <div class="flex-auto justify-self-end space-x-6 w-full">
+                      <div class="flex-auto justify-self-end w-full">
                           <button type="submit" 
                                   class="text-white  justify-items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                   Submit
                           </button>
-                          <router-link to="/register"> <span class="m-2 p-2 px-2 py-2 text-xs flex-auto text-bold text-gray-400 hover:text-gray-200"> You dont have account? Klik to Register</span></router-link>
+                          <div class="flex">
+                            <router-link to="/register"> 
+                            <span class="m-2 px-2 py-2 text-xs flex-auto text-bold text-gray-400 hover:text-gray-200">
+                               You dont have account? Klik to Register
+                               </span>
+                            </router-link>
+                              <router-link to="/forgot-password"> 
+                                <span class="m-2 p-2 px-2 py-2 text-xs text-bold text-gray-400 hover:text-gray-200">
+                                 forgot-password?
+                                </span>
+                            </router-link>
+
+                          </div>
+                            <!-- <span>
+                            </span> -->
+                            
                       </div>
                 </form>
             </div>

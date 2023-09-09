@@ -21,7 +21,8 @@ const props = defineProps({
     modelValue: {
         type:[String, Number],
         default: ''
-    }
+    },
+    type: String
 })
 
     // export default {

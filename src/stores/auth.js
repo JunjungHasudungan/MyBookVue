@@ -70,6 +70,24 @@ export const useAuthStore = defineStore("auth", {
         async handleLogout(){
             await axios.post('/logout');
             this.authUser = null;
+        }, 
+
+        async handleForgotPassword( email ) {
+            try {
+                // post input from user to send endpoint 
+                await axios.post('api/auth/forgot-password', {
+                    email: email
+                });
+
+                // check status input user in data api
+
+                console.log("response: ", email);
+
+            }catch(error) {
+                console.log(error);
+            }
+
+
         }
     }
 });

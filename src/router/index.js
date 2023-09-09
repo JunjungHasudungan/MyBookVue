@@ -7,6 +7,7 @@ import Counter from '../views/Counter.vue';
 import SimpleForm from '../views/SimpleForm.vue';
 import PostEdit from '../views/PostEdit.vue';
 import UserIndex from '../views/User/UserIndex.vue';
+import ForgotPassword from '../components/ForgotPassword.vue';
 
 import Home from '../components/Home.vue'
 
@@ -41,6 +42,14 @@ const routes = [
         component: Register,
         meta: {
             title: "Register"
+        }
+    },
+    {
+        path: "/forgot-password",
+        name: "ForgotPassword",
+        component: ForgotPassword,
+        meta: {
+            title: "Forgot-Password"
         }
     },
     {
